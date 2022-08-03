@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.SMALLINT,
         primaryKey: true,
         autoIncrement: true,
-        allowNull: false
     },
     user_firstName: {
         type: DataTypes.STRING,

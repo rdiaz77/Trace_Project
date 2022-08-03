@@ -4,6 +4,8 @@ const express = require('express')
 const {Sequelize} = require('sequelize')
 const app = express()
 const PORT = process.env.PORT
+const bodyParser = require('body-parser')
+
 
 
 
@@ -11,7 +13,8 @@ const PORT = process.env.PORT
 //MIDDLEWARE
 
 app.use(methodOverride("_method"))
-
+app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
 
 // VIEW ROUTE
 
