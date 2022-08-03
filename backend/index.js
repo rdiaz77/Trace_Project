@@ -1,6 +1,7 @@
 require("dotenv").config()
 const methodOverride = require("method-override")
 const express = require('express')
+const {Sequelize} = require('sequelize')
 const app = express()
 const PORT = process.env.PORT
 
