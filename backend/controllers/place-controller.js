@@ -5,10 +5,10 @@ const place = require('express').Router()
 
 //ROUTE -- ALL PLACES
 
-place.get('/', (req,res)=>{
-    res.send('GET/places')
-})
 
+place.get('/', (req,res)=>{
+    res.send('all places page')
+})
 
 
 

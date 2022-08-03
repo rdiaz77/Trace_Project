@@ -1,4 +1,4 @@
-require("dotenv").config
+require("dotenv").config()
 const methodOverride = require("method-override")
 const express = require('express')
 const app = express()
@@ -13,9 +13,9 @@ app.use(methodOverride("_method"))
 
 
 // VIEW ROUTE
-const placesController = require("./controllers/place-controller")
 
-app.use('./places', placesController)
+
+app.use('/places', require('./controllers/place-controller'))
 
 
 
@@ -28,8 +28,8 @@ app.get('/', (req,res) =>{
 })
 
 app.get('*', (req,res)=>{
-    res.status(404).send(<h1>404 error</h1>)
+    res.status(404).send('<h1>404 error from index JS</h1>')
 })
 
 
-app.listen(PORT, ()=> console.log('awaken at', PORT))
+app.listen(PORT, ()=> console.log('awaken at port', PORT))
