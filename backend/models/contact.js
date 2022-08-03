@@ -14,15 +14,36 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Contact.init({
-    contact_id: DataTypes.SMALLINT,
-    contact_firstName: DataTypes.STRING,
-    contact_lastName: DataTypes.STRING,
-    contact_email: DataTypes.STRING,
-    contact_phone: DataTypes.INTEGER,
-    place_ide: DataTypes.SMALLINT
+    contact_id: {
+        type: DataTypes.SMALLINT,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
+    contact_firstName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    contact_lastName: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    contact_email: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    contact_phone: {
+        type: DataTypes.INTEGER,
+    },
+    place_id: {
+        type: DataTypes.SMALLINT,
+    allowNull: false
+},
   }, {
     sequelize,
     modelName: 'Contact',
+    tableName: "contacts",
+    timestamps: false
   });
   return Contact;
 };
