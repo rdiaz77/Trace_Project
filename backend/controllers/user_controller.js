@@ -48,7 +48,7 @@ user.post('/', async (req, res) => {
     }
 })
 
-// UPDATE A USER -- not working
+// UPDATE A USER 
 user.put('/:id', async (req, res) => {
     try {
         const updatedUser = await User.update(req.body, {
@@ -57,14 +57,14 @@ user.put('/:id', async (req, res) => {
             }
         })
         res.status(200).json({
-            message: `Successfully updated ${updatedUser} band(s)`
+            message: `Successfully updated ${updatedUser} user(s)`
         })
     } catch(err) {
         res.status(500).json(err)
     }
 })
 
-// DELETE A USER -- working
+// DELETE A USER 
 user.delete('/:id', async (req, res) => {
     try {
         const deletedUser = await User.destroy({
