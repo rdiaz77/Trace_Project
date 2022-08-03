@@ -1,10 +1,21 @@
 require("dotenv").config
+const methodOverride = require("method-override")
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT
 
 
 
+
+//MIDDLEWARE
+
+app.use(methodOverride("_method"))
+
+
+// VIEW ROUTE
+const placesController = require("./controllers/place-controller")
+
+app.use('./places', placesController)
 
 
 
