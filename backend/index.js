@@ -17,6 +17,10 @@ app.use(methodOverride("_method"))
 
 
 app.use('/places', require('./controllers/place-controller'))
+app.use('/users', require('./controllers/user_controller'))
+app.use('/contacts', require('./controllers/contact_controller'))
+app.use('/credentials', require('./controllers/credential_controller'))
+app.use('/visits', require('./controllers/visit_controller'))
 
 
 
