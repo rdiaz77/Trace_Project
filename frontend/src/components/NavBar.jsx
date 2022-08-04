@@ -12,6 +12,9 @@ function Navbar(){
                     <a href="/dashboard">Dashboard</a>
                 </li>
                 <li>
+                    <a href='/visits'>Visits</a>
+                </li>
+                <li>
                     <a href='/users'>Users</a>
                 </li>
                 <li>
