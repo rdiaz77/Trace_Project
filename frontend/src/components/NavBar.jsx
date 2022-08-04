@@ -9,7 +9,7 @@ function Navbar(){
 
             <ul>
                 <li>
-                    <a href="/dashboard">Dashboard</a>
+                    <a href="/">Dashboard</a>
                 </li>
                 <li>
                     <a href='/visits'>Visits</a>
@@ -24,11 +24,9 @@ function Navbar(){
                     <a href='/contacts'>Contacts</a>
                 </li>
                 <li>
-                    <a href='/places'>Users</a>
+                    <a href='/support'>Contact Us</a>
                 </li>
-                <li>
-                    <a href='/credentials'>Credentials</a>
-                </li>
+              
               
 
                 

@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-export default function Map(){
+export default function ContactUs(){
 
     return(
         <div>
-           <h1>Map page</h1>
+           <h1>Contact Us page</h1>
 
         </div>
     )
