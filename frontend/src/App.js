@@ -13,6 +13,7 @@ import Visit from './pages/Visit';
 
 
 
+
 function App() {
   return (
    
@@ -27,6 +28,8 @@ function App() {
         <Route path="contacts" element = {<Contact/>}/>
         <Route path="/support" element = {<ContactUs/>}/>
       </Routes>
+
+      
 
     </div>
      
