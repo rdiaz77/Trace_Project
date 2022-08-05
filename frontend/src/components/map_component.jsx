@@ -1,21 +1,18 @@
 import React from 'react';
 import { GoogleMap, LoadScript, useJsApiLoader, Marker } from '@react-google-maps/api';
-import { useState } from 'react';
 
 
-// Get user coordinates
- function getCoords(){
-    return new Promise((resolve, reject)=>{
-        navigator.geolocation.getCurrentPosition(resolve,reject);
 
-    })
-  return [pos.coords.latitude, pos.coords.longitude]
- }
+                                                 
+// Get the user's coordinates:    
 
 
-//  coords: GeolocationCoordinates {latitude: 43.0754208, longitude: -89.5020061, altitude: null, accuracy: 18.536, altitudeAccuracy: null, …}
 
-console.log(getCoords())
+const center = {
+    lat: 43.075460 ,
+    lng: -89.502022
+  };
+
 
 //Feed Google Maps
 const containerStyle = {
@@ -23,17 +20,14 @@ const containerStyle = {
     height: '80vh'
   };
   
-  const center = {
-    lat: 43.075460 ,
-    lng: -89.502022
-  };
+  
 
 export default function MyMap(){
-    const [map, setMap] = useState(null)
 
+  
     return(
         <LoadScript
-      googleMapsApiKey=""
+      googleMapsApiKey= {process.env.KEY}
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
@@ -44,10 +38,10 @@ export default function MyMap(){
             mapTypeControl: false,
 
         }}
-        onLoad={map=>setMap(map)}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
         <Marker position={center}/>
+        { /* Child components, such as markers, info windows, etc. */ }
+        
       </GoogleMap>
 
     </LoadScript>
