@@ -7,10 +7,10 @@ import { useState } from 'react';
 export default function AddUserForm(){
 	
 	const [user, setNewUser] = useState({
-		user_firstName: "",
-		user_lastName: "",
-		user_email: "",
-		credential_id: ""
+		user_firstName: '',
+		user_lastName: '',
+		user_email: '',
+		credential_id: ''
 	})
 
 	const handleDataChange = e =>{
@@ -19,16 +19,16 @@ export default function AddUserForm(){
 
 	};
 
-	const handleSubmit = e=>{
+	async function handleSubmit (e) {
 	console.log(user)
 		e.preventDefault();
-		const db = 'https://jsonplaceholder.typicode.com/posts'
+		const db = 'http://localhost:3000/users'
     	const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user })
     };
-    fetch(db, requestOptions)
+    await fetch(db, requestOptions)
         .then(response => console.log('Submitted successfully'))
         .catch(error => console.log('Form submit error', error))
   };

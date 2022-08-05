@@ -1,4 +1,5 @@
 require("dotenv").config()
+var cors = require('cors')
 const methodOverride = require("method-override")
 const express = require('express')
 const {Sequelize} = require('sequelize')
@@ -15,7 +16,7 @@ const bodyParser = require('body-parser')
 app.use(methodOverride("_method"))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }))
-
+app.use(cors())
 // VIEW ROUTE
 
 
