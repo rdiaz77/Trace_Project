@@ -33,14 +33,49 @@ visit.get('/:id', async (req, res) => {
     }
 })
 
-// CREATE A VISIT -- not working
+
+//ADD A NEW VISIT -- working
+
 
 visit.post('/', async (req, res) => {
     try {
+        console.log('request here', req.body)
         const newVisit = await Visit.create(req.body)
         res.status(200).json({
-            message: 'Successfully inserted a new visit',
+            message: 'visit created Successfully',
             data: newVisit
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
+
+// UPDATE A VISIT -- working
+visit.put('/:id', async (req, res) => {
+    try {
+        const updatedVisit = await Visit.update(req.body, {
+            where: {
+                visit_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully updated ${updatedVisit} user(s)`
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
+
+// DELETE A VISIT -- working
+visit.delete('/:id', async (req, res) => {
+    try {
+        const deletedVisit = await Visit.destroy({
+            where: {
+                visit_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully deleted ${deletedVisit} user(s)`
         })
     } catch(err) {
         res.status(500).json(err)

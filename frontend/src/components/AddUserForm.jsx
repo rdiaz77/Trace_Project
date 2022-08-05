@@ -22,13 +22,13 @@ export default function AddUserForm(){
 	const handleSubmit = e=>{
 	console.log(user)
 		e.preventDefault();
-		const url = 'https://jsonplaceholder.typicode.com/posts'
+		const db = 'https://jsonplaceholder.typicode.com/posts'
     	const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ user })
     };
-    fetch(url, requestOptions)
+    fetch(db, requestOptions)
         .then(response => console.log('Submitted successfully'))
         .catch(error => console.log('Form submit error', error))
   };

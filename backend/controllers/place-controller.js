@@ -31,6 +31,53 @@ place.get('/:id', async (req, res) => {
     }
 })
 
+//ADD A NEW PLACE -- working
+
+
+place.post('/', async (req, res) => {
+    try {
+        console.log('request here', req.body)
+        const newPlace = await Place.create(req.body)
+        res.status(200).json({
+            message: 'place created Successfully',
+            data: newPlace
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
+
+// UPDATE A PLACE 
+place.put('/:id', async (req, res) => {
+    try {
+        const updatedPlace = await Place.update(req.body, {
+            where: {
+                place_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully updated ${updatedPlace} place(s)`
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
+
+// DELETE A PLACE 
+place.delete('/:id', async (req, res) => {
+    try {
+        const deletedPlace = await Place.destroy({
+            where: {
+                place_id: req.params.id
+            }
+        })
+        res.status(200).json({
+            message: `Successfully deleted ${deletedPlace} place(s)`
+        })
+    } catch(err) {
+        res.status(500).json(err)
+    }
+})
 
 
 
