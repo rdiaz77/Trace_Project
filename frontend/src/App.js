@@ -12,6 +12,7 @@ import AddUserForm from './components/AddUserForm';
 import AddContactForm from './components/AddContactForm';
 import Error404 from './pages/Error404';
 import AddUser from './pages/AddUser';
+import Login from "./pages/Login"
 
 
 
@@ -25,6 +26,7 @@ function App() {
       
 
         <Routes>
+          <Route exact path='/login' component = {<Login/>}/>
           <Route exact path="/404" component = {<Error404/>}/>
           <Route exact path="/" element = {<Dashboard/>}/>
           <Route exact path="/visits" element = {<Visit/>}/>

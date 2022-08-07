@@ -1,5 +1,5 @@
 import React from 'react';
-import MyMap from '../components/Map_component';
+import MapAPI from '../components/MapAPI';
 
 
 
@@ -9,7 +9,7 @@ export default function Map(){
         <div>
            <h1>You are here</h1>
 
-           <MyMap />
+           <MapAPI />
 
 
         </div>
