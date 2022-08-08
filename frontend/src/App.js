@@ -14,6 +14,7 @@ import Login from "./pages/Login"
 import UserView from './components/UservView';
 import AddContactsForm from './components/AddContactForm'
 import AddVisitForm from './components/AddVisitForm';
+import ContactUsForm from './components/ContactUsForm';
 
 function App() {
   return (
@@ -41,7 +42,8 @@ function App() {
           <Route exact path="/contacts/new" element={<AddContactsForm/>}/>
           
 
-          <Route exact path="/support" element = {<ContactUs/>}/>
+          <Route exact path="/support" element = {<ContactUsForm/>}/>
+          
           
         </Routes>
 
