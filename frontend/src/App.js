@@ -9,13 +9,11 @@ import Map from './pages/Map';
 import User from './pages/User';
 import Visit from './pages/Visit';
 import AddUserForm from './components/AddUserForm';
-import AddContactForm from './components/AddContactForm';
 import Error404 from './pages/Error404';
-import AddUser from './pages/AddUser';
 import Login from "./pages/Login"
-
-
-
+import UserView from './components/UservView';
+import AddContactsForm from './components/AddContactForm'
+import AddVisitForm from './components/AddVisitForm';
 
 function App() {
   return (
@@ -26,20 +24,22 @@ function App() {
       
 
         <Routes>
-          <Route exact path='/login' component = {<Login/>}/>
+         <Route exact path="/login" element = {<Login/>}/>
           <Route exact path="/404" component = {<Error404/>}/>
           <Route exact path="/" element = {<Dashboard/>}/>
-          <Route exact path="/visits" element = {<Visit/>}/>
 
-          <Route exact path="/users" element = {<User/>}>
-            <Route exact path="new" element={<AddUserForm/>}/>
-          </Route>
+          <Route exact path="/visits" element = {<Visit/>}/>
+          <Route exact path="/visits/new" element = {<AddVisitForm/>}/>
+
+          <Route exact path="/users" element = {<User/>}/>
+          <Route exact path="/users/new" element={<AddUserForm/>}/>
+          <Route exact path='/users/:id' element={<UserView />} />
 
           <Route exact path="/map" element = {<Map/>}/>
 
-          <Route exact path="contacts" element = {<Contact/>}>
-            <Route exact path="new" element={<AddUser/>}/>
-          </Route>
+          <Route exact path="/contacts" element = {<Contact/>}/>
+          <Route exact path="/contacts/new" element={<AddContactsForm/>}/>
+          
 
           <Route exact path="/support" element = {<ContactUs/>}/>
           

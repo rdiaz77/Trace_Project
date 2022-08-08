@@ -1,40 +1,58 @@
-import React from 'react';
+import React , {useState} from 'react';
+import { TextField, Box, Button } from '@mui/material';
 
 
 
 export default function AddContactForm(){
 
+
+	const [contact, setContact] = useState({
+		
+        contact_firstName: '',
+        contact_lastName: '',
+        contact_email: '',
+        contact_phone: '',
+        place_id: ''
+	})
+
+	async function handleSubmit(e) {
+		e.preventDefault()
+		const db = 'http://localhost:3000/contacts'
+
+		await fetch(db, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(contact)
+		})
+		
+		
+	}
+
     return(
         <>  
 			<h1>Add New Contact</h1>
-			<form method="POST" action= "/users">
-				<div className = 'form-group'>
-					<label htmlFor="first name">First Name</label>
-					<input className ='form-control' id="contact_firstName" name="name" required />
-				</div>
-				<div className = 'form-group'>
-					<label htmlFor="last Name">Last Name</label>
-					<input className ='form-control'  id="contact_lastName" name="lastName" />
-				</div>
-				<div className = 'form-group'>
-					<label htmlFor="city">Email</label>
-					<input className ='form-control' type="email" id="contact_email" name="email" />
-				</div>
-				<div className = 'form-group'>
-					<label htmlFor="city">Phone</label>
-					<input className ='form-control' type="phone" id="contact_phone" name="phone" />
-				</div>
-				
-			   
-				<div className = 'form-group'>
-					<label htmlFor="place">Contact works at:</label>
-					<input className ='form-control' id="place_id" name="place" required />
-				</div>
-				<div>
-				<input className="btn btn-primary" type="submit" value="Add New Contact"/>
-				</div>
+			<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
 
-			</form>
+				<form method="POST" action= "/contacts" onSubmit={handleSubmit}>
+
+					<TextField onChange= {e => setContact({ ...contact, contact_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
+
+					<TextField onChange= {e => setContact({ ...contact, contact_lastName: e.target.value })} id= "outlined-basic" fullWidth label="Last Name"  variant = "outlined"/>
+
+					<TextField onChange= {e => setContact({ ...contact, contact_email: e.target.value })} id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
+				
+					<TextField onChange= {e => setContact({ ...contact, contact_phone: e.target.value })} id= "outlined-basic" fullWidth label="Phone" variant = "outlined"/>
+
+					<TextField onChange= {e => setContact({ ...contact, place_id: e.target.value })} id= "outlined-basic" fullWidth label="Place" variant = "outlined"/>
+					<br />
+					<Button onSubmit={handleSubmit} variant="outlined" type='submit'> Add New contact</Button>
+					
+				</form>
+
+				</Box>
+
         
         
         </>

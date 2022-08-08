@@ -24,7 +24,7 @@ async function handleSubmit(e) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(user)
+        body: JSON.stringify()
     })
 
     
@@ -36,7 +36,7 @@ return(
 
     <form action="">
 
-        <TextField onChange= {handledSearch} id= "outlined-basic" fullWidth label="Search" margin="none" variant = "outlined">
+        <TextField onChange= {handledSearch} id= "outlined-basic" fullWidth label="Enter User's name" margin="none" variant = "outlined">
 
         </TextField>
         <Button margin = "normal" variant='outlined'>Search</Button>
