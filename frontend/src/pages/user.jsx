@@ -2,33 +2,57 @@ import React, {useEffect, useState} from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { Button } from '@mui/material';
 import SearchBar from '../components/SearchBar';
+import {useHistory} from 'react-router-dom'
+
 
 export default function User(){
+
+    const [users, setUsers] = useState([])
     
-let users = fetch('http://localhost:3000/users/')
-    .then(response => response.json())
-    .then(user => console.log(user[0]))
-    .catch(err =>console.log(err))
+
+    useEffect(() => {
+        const url = "http://localhost:3000/users"
+        async function getAllUsers() {
+           const res = await fetch(url)
+           const dbUsers = await res.json()
+           setUsers(dbUsers)
+        }
+		
+		getAllUsers()
+	}, [])
+    
+    let allUsers = users.map((users) => {
+		return (
+			<div  key={users.user_id}>
+				<h2>
+					{/* <a href="#" onClick={() => history.push(`/users/${users.users_id}`)} > */}
+                    <a href="#">
+						{users.user_firstName}
+					</a>
+				</h2>
+				<p>
+					{users.user_lastName}
+				</p>
+				
+			</div>
+		)
+	})
 
 
-// const userMap = users.map(user=> user)
-// console.log(userMap)
+async function handledDelete(e) {}
+//     e.preventDefault()
+//     const db = 'http://localhost:3000/users:id'
 
-
-async function handledDelete(e) {
-    e.preventDefault()
-    const db = 'http://localhost:3000/users:id'
-
-    await fetch(db, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(users)
-    })
+//     await fetch(db, {
+//         method: 'DELETE',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(users)
+//     })
 
     
-}
+// }
 
 
 

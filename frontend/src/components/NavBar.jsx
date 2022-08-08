@@ -9,9 +9,7 @@ function Navbar(){
         <Link to='/' className='site-title'>SVTrace</Link>
 
             <ul>
-                <li>
-                    <Link to ='/login'>Login</Link>
-                </li>
+                
                 <li>
                     <Link to="/">Dashboard</Link>
                 </li>

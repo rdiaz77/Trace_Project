@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button"
 import { TextField, Container} from '@mui/material';
+import Card from '@mui/material/Card';
 
 
 
@@ -29,7 +30,8 @@ export default function LogInForm(){
     return(
 
         <div>
-            <Container> 
+            <Card sx={{ maxWidth: 410, height:210 }}>  
+           
                 <Box sx = {{width: 390, height: 200, border:'primary dark'}} >
                     <form method='POST' action= '/login'>
                         <TextField onChange={handledLogin} id= "outlined-basic" fullWidth label="Email address" margin="none" variant = "outlined">
@@ -42,7 +44,8 @@ export default function LogInForm(){
 
                     </form>
                 </Box>
-            </Container>
+            
+            </Card>
             
         </div>
 
