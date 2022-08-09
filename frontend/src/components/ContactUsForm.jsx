@@ -1,10 +1,13 @@
 import React , {useState} from 'react';
-import { TextField, Box, Button } from '@mui/material';
-
+import { TextField, Box, Button, Typography } from '@mui/material';
 
 
 export default function ContactUsForm(){
-
+    const reasons =[
+        "Wrong information in place or contact",
+        "A way to improve the app",
+        "I cannot find certain information"
+    ]
 
 	const [contactMe, setContactMe] = useState({
 		
@@ -26,32 +29,62 @@ export default function ContactUsForm(){
 		
 	}
 
-    return(
-        <>  
-			<h1>Contact Us</h1>
-            <h3>please fill out the form</h3>
-			<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
+    return (
+      <>
+        <Typography variant="h3">Contact Us</Typography>
 
-				<form method="POST" action= "/contacts" onSubmit={handleSubmit}>
+        <Typography variant="h5">All fields are required</Typography>
 
-					<TextField  id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Box sx={{ m: 1, width: 400, height: 600 }}>
+            <form method="POST" action="/contacts" onSubmit={handleSubmit}>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="First Name"
+                variant="outlined"
+                margin="dense"
+              />
 
-					<TextField id= "outlined-basic" fullWidth label="Last Name"  variant = "outlined"/>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Last Name"
+                variant="outlined"
+              />
 
-					<TextField id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
-				
-					<TextField id= "outlined-basic" fullWidth label="Place" variant = "outlined"/>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Email"
+                variant="outlined"
+                margin="dense"
+              />
 
-					<TextField id= "outlined-basic" fullWidth label="Reason for contacting us" multiline rows={7} variant = "outlined"/>
-					<br />
-					<Button onSubmit={handleSubmit} variant="outlined" type='submit'> Send</Button>
-					
-				</form>
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Reason for Contacting Us"
+                variant="outlined"
+              />
 
-				</Box>
-
-        
-        
-        </>
-    )
+              <TextField
+                id="outlined-basic"
+                fullWidth
+                label="Message"
+                multiline
+                rows={10}
+                variant="outlined"
+                margin="dense"
+              />
+              <br />
+              <Button onSubmit={handleSubmit} variant="outlined" type="submit">
+                {" "}
+                Send
+              </Button>
+            </form>
+          </Box>
+        </Box>
+      </>
+    );
 }
