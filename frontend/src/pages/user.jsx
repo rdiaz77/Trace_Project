@@ -29,24 +29,33 @@ export default function User(){
     
     let allUsers = users.map((users) => {
 		return (
-			<div  key={users.user_id}>
-				<Typography variant='h6'>
-					{/* <a href="#" onClick={() => history.push(`/users/${users.users_id}`)} > */}
-                    <a href="#">
-						{users.user_firstName} {users.user_lastName}
-					</a>
-                    {users.user_email} 
-				</Typography>
-				
-				
-			</div>
+            <TableContainer>
+
+                <TableHead>
+                    <TableRow>
+                        <TableCell>First Name</TableCell>
+                        <TableCell>Last Name</TableCell>
+                        <TableCell>Email</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    <TableRow key={users.user_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                    <TableCell component="th" scope="row">{users.user_firstName}</TableCell>
+                    <TableCell>{users.user_lastName}</TableCell>
+                    <TableCell>{users.user_email}</TableCell>
+
+                    </TableRow>
+
+                </TableBody>
+
+            </TableContainer>
+
 		)
 	})
 
     const handledOnClick = (e)=>{
         e.preventDefault();
         setBringUsers(allUsers)
-
 
     }
 
