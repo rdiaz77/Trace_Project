@@ -27,31 +27,35 @@ export default function User(){
 		getAllUsers()
 	}, [])
     
-    let allUsers = users.map((users) => {
+    // let allUsers = users.map((users) => 
+    function allUsers(){
 		return (
-            <TableContainer>
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>First Name</TableCell>
+                            <TableCell>Last Name</TableCell>
+                            <TableCell>Email</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        { users.map(user => (
+                            
+                        <TableRow key={user.user_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                            <TableCell component="th" scope="row">{user.user_firstName}</TableCell>
+                            <TableCell>{user.user_lastName}</TableCell>
+                            <TableCell>{user.user_email}</TableCell>
 
-                <TableHead>
-                    <TableRow>
-                        <TableCell>First Name</TableCell>
-                        <TableCell>Last Name</TableCell>
-                        <TableCell>Email</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    <TableRow key={users.user_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                    <TableCell component="th" scope="row">{users.user_firstName}</TableCell>
-                    <TableCell>{users.user_lastName}</TableCell>
-                    <TableCell>{users.user_email}</TableCell>
+                        </TableRow>
+                        ))}
 
-                    </TableRow>
-
-                </TableBody>
-
+                    </TableBody>
+                </Table>
             </TableContainer>
 
 		)
-	})
+	}
 
     const handledOnClick = (e)=>{
         e.preventDefault();
@@ -77,9 +81,10 @@ export default function User(){
             <Box>
                 <Button onClick={handledOnClick}> Show users</Button>
             </Box>
-            <div>
+            
+                {allUsers}
                 {bringUsers}
-            </div>
+            
             <br />
             <Button  variant = 'contained' color='warning'> Delete User</Button>
             
