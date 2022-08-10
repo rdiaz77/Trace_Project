@@ -15,6 +15,7 @@ import UserView from './components/UservView';
 import AddContactsForm from './components/AddContactForm'
 import AddVisitForm from './components/AddVisitForm';
 import ContactUsForm from './components/ContactUsForm';
+import EditUserForm from './components/EditUserForm';
 
 function App() {
   return (
@@ -27,7 +28,6 @@ function App() {
         <Routes>
          <Route exact path="/login" element = {<Login/>}/>
           <Route exact path="/404" component = {<Error404/>}/>
-          <Route exact path="/" element = {<Dashboard/>}/>
 
           <Route exact path="/visits" element = {<Visit/>}/>
           <Route exact path="/visits/new" element = {<AddVisitForm/>}/>
@@ -35,6 +35,7 @@ function App() {
           <Route exact path="/users" element = {<User/>}/>
           <Route exact path="/users/new" element={<AddUserForm/>}/>
           <Route exact path='/users/:id' element={<UserView />} />
+          <Route exact path ='/users/edit/:id' element={<EditUserForm/>}/>
 
           <Route exact path="/map" element = {<Map/>}/>
 
@@ -44,6 +45,7 @@ function App() {
 
           <Route exact path="/support" element = {<ContactUsForm/>}/>
           
+          <Route exact path="/" element = {<Dashboard/>}/>
           
         </Routes>
 

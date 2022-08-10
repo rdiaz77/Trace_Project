@@ -2,7 +2,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box'
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
+import { display } from '@mui/system';
 
 
 
@@ -41,26 +42,29 @@ export default function AddUserForm(){
 	
 	return(
 		<main>
-			<h1>Add New User</h1>
-				
-				
-			<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
+			<Typography variant='h3'> Add new user</Typography>
+			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', maxWidth: 450}}>
 
-				<form method="POST" action= "/users" onSubmit={handleSubmit}>
+				<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
 
-					<TextField onChange= {e => setNewUser({ ...user, user_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
+					<form method="POST" action= "/users" onSubmit={handleSubmit}>
 
-					<TextField onChange= {e => setNewUser({ ...user, user_lastName: e.target.value })} id= "outlined-basic" fullWidth label="Last Name"  variant = "outlined"/>
+						<TextField onChange= {e => setNewUser({ ...user, user_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
 
-					<TextField onChange= {e => setNewUser({ ...user, user_email: e.target.value })} id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
-				
-					<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
-					<br />
-					<Button variant="outlined" type='submit'> Add New User</Button>
+						<TextField onChange= {e => setNewUser({ ...user, user_lastName: e.target.value })} id= "outlined-basic" fullWidth label="Last Name"  variant = "outlined"/>
+
+						<TextField onChange= {e => setNewUser({ ...user, user_email: e.target.value })} id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
 					
-				</form>
+						<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
+						<br />
+						<Button variant="outlined" type='submit'> Add New User</Button>
+						
+					</form>
 
 				</Box>
+			</Box>
+				
+				
 
 
 			
