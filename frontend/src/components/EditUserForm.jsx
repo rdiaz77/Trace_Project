@@ -14,47 +14,23 @@ export default function EditUserForm() {
 	const history = useNavigate()
 
     const { user_id } = useParams()
-    const [user, setUser] = useState({
+    const [user, setUser] = useState([])
 
-        user_firstName: '',
-		user_lastName: '',
-		user_email: '',
-		credential_id: ''
-
-    })
-
-    // useEffect(() => {
-    //     async function getAllUsers() {
-    //         const res = await fetch(`http://localhost:3000/users/${user_id}`);
-    //         const dbUsers = await res.json();
-    //         setUser(dbUsers);
-    //     }
-        
-    //     getAllUsers();
-    // }, []);
-
-
-    // const [editUser, setEditUser] = useState({
-
-	// 	user_firstName: '',
-	// 	user_lastName: '',
-	// 	user_email: '',
-	// 	credential_id: ''
-	// })
-
-	// useEffect(() => {
-	// 	const fetchData = async () => {
-	// 		const response = await fetch(`http://localhost:3000/users/${user_id}`)
-	// 		const data = await response.json()
-	// 		setUser(data)
-	// 	}
-	// 	fetchData()
-	// }, [ user_id ])
+    useEffect(() => {
+		const fetchData = async () => {
+			const response = await fetch(`http://localhost:3000/users/${user_id}`);
+			const resData = await response.json();
+			setUser(resData);
+            console.log(resData)
+		}
+		fetchData()
+	}, [ user_id ])
+	
 
 	async function handleSubmit(e) {
 		e.preventDefault()
 
-		await fetch(`http://localhost:3000/users/${user.user_id}`, {
+		await fetch(`http://localhost:3000/users/${user_id}`, {
 			method: 'PUT',
 			headers: {
 				'Content-Type': 'application/json'
@@ -79,7 +55,7 @@ export default function EditUserForm() {
 
 				<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
 
-					<form method="POST" action= "/users" onSubmit={handleSubmit}>
+					<form method="POST" action= {`http://localhost:3000/users/${user_id}?_method=PUT`} onSubmit={handleSubmit}>
 
 						<TextField onChange= {e => setUser({ ...user, user_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
 

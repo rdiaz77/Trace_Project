@@ -4,18 +4,17 @@ import './style.css'
 import {Route, Router, Routes} from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
-import ContactUs from './pages/ContactUs';
 import Map from './pages/Map';
 import User from './pages/User';
 import Visit from './pages/Visit';
 import AddUserForm from './components/AddUserForm';
 import Error404 from './pages/Error404';
 import Login from "./pages/Login"
-import UserView from './components/UservView';
 import AddContactsForm from './components/AddContactForm'
 import AddVisitForm from './components/AddVisitForm';
 import ContactUsForm from './components/ContactUsForm';
 import EditUserForm from './components/EditUserForm';
+import ShowUser from './components/ShowUser';
 
 function App() {
   return (
@@ -34,8 +33,8 @@ function App() {
 
           <Route exact path="/users" element = {<User/>}/>
           <Route exact path="/users/new" element={<AddUserForm/>}/>
-          <Route exact path='/users/:id' element={<UserView />} />
-          <Route exact path ='/users/edit/:id' element={<EditUserForm/>}/>
+          <Route exact path='/users/:id' element={<ShowUser />} />
+          <Route exact path ='/users/:id/edit' element={<EditUserForm/>}/>
 
           <Route exact path="/map" element = {<Map/>}/>
 
