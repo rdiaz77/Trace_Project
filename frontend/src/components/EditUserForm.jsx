@@ -14,23 +14,42 @@ export default function EditUserForm() {
 	const history = useNavigate()
 
     const { user_id } = useParams()
-
     const [user, setUser] = useState({
 
-		user_firstName: '',
+        user_firstName: '',
 		user_lastName: '',
 		user_email: '',
 		credential_id: ''
-	})
 
-	useEffect(() => {
-		const fetchData = async () => {
-			const response = await fetch(`http://localhost:3000/users/${user_id}`)
-			const data = await response.json()
-			setUser(data)
-		}
-		fetchData()
-	}, [ user_id ])
+    })
+
+    // useEffect(() => {
+    //     async function getAllUsers() {
+    //         const res = await fetch(`http://localhost:3000/users/${user_id}`);
+    //         const dbUsers = await res.json();
+    //         setUser(dbUsers);
+    //     }
+        
+    //     getAllUsers();
+    // }, []);
+
+
+    // const [editUser, setEditUser] = useState({
+
+	// 	user_firstName: '',
+	// 	user_lastName: '',
+	// 	user_email: '',
+	// 	credential_id: ''
+	// })
+
+	// useEffect(() => {
+	// 	const fetchData = async () => {
+	// 		const response = await fetch(`http://localhost:3000/users/${user_id}`)
+	// 		const data = await response.json()
+	// 		setUser(data)
+	// 	}
+	// 	fetchData()
+	// }, [ user_id ])
 
 	async function handleSubmit(e) {
 		e.preventDefault()
@@ -45,6 +64,12 @@ export default function EditUserForm() {
 
 		history.push(`/users/${user.user_id}`)
 	}
+
+
+
+
+
+
 
 	return (
 		<>

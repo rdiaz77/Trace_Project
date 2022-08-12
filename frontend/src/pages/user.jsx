@@ -8,19 +8,22 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import TablePagination from '@mui/material';
 import Paper from '@mui/material/Paper';
-
+import { useNavigate } from 'react-router-dom';
 
 
 export default function User() {
 
     // SET STATES & GLOBAL VAR
 
+    const history = useNavigate()
     const url = "http://localhost:3000/users";
     const [users, setUsers] = useState([]);
     const [bringUsers, setBringUsers] = useState(null);
-    const [deleteUser, setDeleteUser] = useState(null)
+    const [deleteUser, setDeleteUser] = useState({
+
+        user_id: ''
+    })
 
   //DATA FETCH
   
@@ -41,7 +44,21 @@ export default function User() {
     setBringUsers(allUsers);
   };
 
-  const handleDelete = (e) =>{}
+
+//   let deleteNote = async () => {
+//     await fetch(`http://localhost:8000/notes/${noteId}`, {
+//      method: "DELETE",
+//     });
+//     history.push("/");
+
+ let handleDelete = async ({id}) => {
+        await fetch(`http://localhost/users/${id}`, {
+          method: "DELETE",
+        });
+        history.push('/');
+      }
+      
+  
 
 
   
@@ -79,7 +96,7 @@ export default function User() {
                     </Button>
                 </TableCell>
                 <TableCell>
-                    <form method="POST" action={`/user/${user.id}`}>
+                    <form method="POST" action={`http://localhost:3000/users/${user.user_id}?_method=DELETE`}>
                         <Button variant='contained' type='submit' color='error' size='small' onClick={handleDelete}>Delete</Button>
 
                     </form>
@@ -115,7 +132,6 @@ export default function User() {
 
             {bringUsers}
 
-            <br />
             
         </>
 )

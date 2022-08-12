@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box'
 import { Button, TextField, Typography } from '@mui/material';
-import { display } from '@mui/system';
 
 
 
@@ -49,7 +47,7 @@ export default function AddUserForm(){
 
 					<form method="POST" action= "/users" onSubmit={handleSubmit}>
 
-						<TextField onChange= {e => setNewUser({ ...user, user_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
+						<TextField defaultValue={''} onChange= {e => setNewUser({ ...user, user_firstName: e.target.value })} id= "outlined-basic" fullWidth label="First Name"  variant = "outlined" />
 
 						<TextField onChange= {e => setNewUser({ ...user, user_lastName: e.target.value })} id= "outlined-basic" fullWidth label="Last Name"  variant = "outlined"/>
 
