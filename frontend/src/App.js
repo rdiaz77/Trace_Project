@@ -22,8 +22,7 @@ function App() {
     <div>
      <Navbar />
     <div>
-      
-
+    
         <Routes>
          <Route exact path="/login" element = {<Login/>}/>
           <Route exact path="/404" component = {<Error404/>}/>

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Box from '@mui/material/Box'
 import { Button, TextField, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-
+import Grid from '@mui/material/Grid';
 
 
 
@@ -43,10 +43,10 @@ export default function AddUserForm(){
 	
 	return(
 		<main>
-			<Typography variant='h3'> Add new user</Typography>
-			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', maxWidth: 450}}>
+			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent:'center', maxWidth: 300, m:10 }}>
+				<Typography variant='h3'> Add new user</Typography>
 
-				<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
+				<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 } }} >
 
 					<form method="POST" action= "/users" onSubmit={handleSubmit}>
 
@@ -58,8 +58,15 @@ export default function AddUserForm(){
 					
 						<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
 						<br />
-						<Button variant="contained" color='primary' type='submit'> Add User</Button>
-						<Button variant="contained" href="/users"> Cancel</Button>
+						<Box sx ={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly', maxWidth: 450}}>
+							<Grid>
+								<Button variant="contained" color='primary' type='submit'> Add User</Button>
+							</Grid>
+							<Grid>
+								<Button variant="contained" href="/users"> Cancel</Button>
+							</Grid>
+
+						</Box>
 						
 					</form>
 
