@@ -11,10 +11,10 @@ import { Typography, Box, TextField, Button } from "@mui/material"
 
 export default function EditUserForm() {
 
-	const history = useNavigate()
+	const navigate = useNavigate()
 
     const { id } = useParams()
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
 		const fetchData = async () => {
@@ -37,7 +37,8 @@ export default function EditUserForm() {
 			body: JSON.stringify(user)
 		})
 
-		history.push(`/`)
+		navigate(`/users/${id}`);
+
 	}
 
 
