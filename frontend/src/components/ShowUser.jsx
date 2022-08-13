@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Typography, Box, TextField, Button } from '@mui/material';
-import { Navigate, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 
 
 
