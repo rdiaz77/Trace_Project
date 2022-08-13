@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Box, Button, Typography } from "@mui/material";
 import SearchBar from "../components/SearchBar";
 import Table from "@mui/material/Table";
@@ -10,13 +9,20 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 export default function User() {
   // SET STATES & GLOBAL VAR
 
   const history = useNavigate();
   const url = "http://localhost:3000/users";
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState({
+        user_firstName:'',
+        user_lastName: '',
+        user_email:'',
+        credential_id: ''
+  });
   const [bringUsers, setBringUsers] = useState(null);
   const [deleteUser, setDeleteUser] = useState({
     user_id: "",
@@ -74,25 +80,25 @@ export default function User() {
                 <TableCell>{user.user_lastName}</TableCell>
                 <TableCell>{user.user_email}</TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary" size="small">
-                    <Link
+                  <Button variant="contained" color="secondary" size="small" href={`/users/${user.user_id}`}>
+                    {/* <Link
                       to={`${user.user_id}`}
                       underline="none"
                       component="button"
-                    >
+                    > */}
                       See
-                    </Link>
+                    {/* </Link> */}
                   </Button>
                   </TableCell>
                 <TableCell>
-                  <Button variant="contained" color="secondary" size="small">
-                    <Link
+                  <Button variant="contained" color="secondary" size="small" href={`/users/${user.user_id}/edit`}>
+                    {/* <Link
                       to={`${user.user_id}/edit`}
                       underline="none"
                       component="button"
-                    >
+                    > */}
                       Edit
-                    </Link>
+                    {/* </Link> */}
                   </Button>
                 </TableCell>
                 <TableCell>
@@ -105,6 +111,7 @@ export default function User() {
                       type="submit"
                       color="error"
                       size="small"
+                      startIcon={<DeleteIcon />}
                       onClick={handleDelete}
                     >
                       Delete
@@ -129,8 +136,8 @@ export default function User() {
           <SearchBar />
         </Box>
         <Box>
-          <Button variant="contained">
-            <Link to="new">New User</Link>
+          <Button variant="contained" href="/users/new">
+            Add New User
           </Button>
         </Box>
       </Box>

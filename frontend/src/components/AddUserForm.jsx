@@ -55,7 +55,7 @@ export default function AddUserForm(){
 					
 						<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
 						<br />
-						<Button variant="outlined" type='submit'> Add New User</Button>
+						<Button variant="outlined" type='submit'> Add User</Button>
 						
 					</form>
 

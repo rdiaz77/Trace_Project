@@ -14,7 +14,12 @@ export default function EditUserForm() {
 	const navigate = useNavigate()
 
     const { id } = useParams()
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({
+        user_firstName:'',
+        user_lastName: '',
+        user_email:'',
+        credential_id: ''
+    })
 
     useEffect(() => {
 		const fetchData = async () => {

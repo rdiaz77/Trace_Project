@@ -31,7 +31,6 @@ export default function ShowUser(){
 		getUser()
 	}, [ id ])
 
-console.log(user.user_firstName)
 
     return(
         <main>
@@ -51,7 +50,7 @@ console.log(user.user_firstName)
 					
 						<TextField id= "outlined-basic" fullWidth label="Credential" value={user.credential_id} variant = "outlined"/>
 						<br />
-						<Button variant="outlined" type='submit'> Back</Button>
+						<Button variant="outlined" type='submit' href='/users'> Back</Button>
 						
 					</form>
 
