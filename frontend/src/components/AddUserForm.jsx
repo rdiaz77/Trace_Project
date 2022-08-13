@@ -2,12 +2,14 @@ import React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box'
 import { Button, TextField, Typography } from '@mui/material';
-
+import { useNavigate } from 'react-router-dom';
 
 
 
 
 export default function AddUserForm(){
+
+	const navigate = useNavigate()
 	
 	const [user, setNewUser] = useState({
 		user_firstName: '',
@@ -33,6 +35,7 @@ export default function AddUserForm(){
 			},
 			body: JSON.stringify(user)
 		})
+		navigate(`/users`);
 
 		
 	}
@@ -55,7 +58,8 @@ export default function AddUserForm(){
 					
 						<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
 						<br />
-						<Button variant="outlined" type='submit'> Add User</Button>
+						<Button variant="contained" color='primary' type='submit'> Add User</Button>
+						<Button variant="contained" href="/users"> Cancel</Button>
 						
 					</form>
 

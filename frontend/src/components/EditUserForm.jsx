@@ -73,6 +73,7 @@ export default function EditUserForm() {
 						<TextField id= "outlined-basic" onChange= {e => setUser({ ...user, credential_id: e.target.value })} fullWidth label="Credential" value={user.credential_id} InputLabelProps={{ shrink: true }} variant = "outlined" />
 						<br />
 						<Button variant="outlined" type='submit'> Save</Button>
+                        <Button variant="outlined" href="/users"> Cancel</Button>
 						
 					</form>
 

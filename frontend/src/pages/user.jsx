@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
-import SearchBar from "../components/SearchBar";
+import { Box, Button } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -18,80 +17,84 @@ import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import { useTheme } from '@mui/material/styles';
 import TableFooter from '@mui/material/TableFooter';
 import TablePagination from '@mui/material/TablePagination';
+import PropTypes from 'prop-types';
+import Grid from '@mui/material/Grid';
+
 
 
 
 // PAGINATION
-interface TablePaginationActionsProps {
-    count: number;
-    page: number;
-    rowsPerPage: number;
-    onPageChange: (
-      event: React.MouseEvent<HTMLButtonElement>,
-      newPage: number,
-    ) => void;
-  }
+function TablePaginationActions(props) {
+  const theme = useTheme();
+  const { count, page, rowsPerPage, onPageChange } = props;
   
-  function TablePaginationActions(props: TablePaginationActionsProps) {
-    const theme = useTheme();
-    const { count, page, rowsPerPage, onPageChange } = props;
+  const handleFirstPageButtonClick = (event) => {
+    console.log("pressed handleFirstPageButtonClick")
+    onPageChange(event, 0);
+  };
   
-    const handleFirstPageButtonClick = (
-      event: React.MouseEvent<HTMLButtonElement>,
-    ) => {
-      onPageChange(event, 0);
-    };
+  const handleBackButtonClick = (event) => {
+    onPageChange(event, page - 1);
+  };
   
-    const handleBackButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      onPageChange(event, page - 1);
-    };
+  const handleNextButtonClick = (event) => {
+    console.log("pressed handleNextButtonClick")
+    onPageChange(event, page + 1);
+  };
   
-    const handleNextButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      onPageChange(event, page + 1);
-    };
+  const handleLastPageButtonClick = (event) => {
+    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
+  };
   
-    const handleLastPageButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-      onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-    };
-  
-    return (
-      <Box sx={{ flexShrink: 0, ml: 2.5 }}>
-        <IconButton
-          onClick={handleFirstPageButtonClick}
-          disabled={page === 0}
-          aria-label="first page"
+  return (
+    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
+      <IconButton
+        onClick={handleFirstPageButtonClick}
+        disabled={page === 0}
+        aria-label="first page"
         >
-          {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
-        </IconButton>
-        <IconButton
-          onClick={handleBackButtonClick}
-          disabled={page === 0}
-          aria-label="previous page"
+        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+      </IconButton>
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
         >
-          {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
-        </IconButton>
-        <IconButton
-          onClick={handleNextButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="next page"
+        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+      </IconButton>
+      <IconButton
+        onClick={handleNextButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="next page"
         >
-          {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-        </IconButton>
-        <IconButton
-          onClick={handleLastPageButtonClick}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="last page"
+        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+      </IconButton>
+      <IconButton
+        onClick={handleLastPageButtonClick}
+        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
+        aria-label="last page"
         >
-          {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
-        </IconButton>
-      </Box>
-    );
-  }
+        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+      </IconButton>
+    </Box>
+  );
+}
+
+TablePaginationActions.propTypes = {
+  count: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  rowsPerPage: PropTypes.number.isRequired,
+};
 
 export default function User() {
+
   // SET STATES & GLOBAL VAR
-   
-  const history = useNavigate();
+
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  
+  const navigate = useNavigate();
   const url = "http://localhost:3000/users";
   const [users, setUsers] = useState({
         user_firstName:'',
@@ -100,9 +103,7 @@ export default function User() {
         credential_id: ''
   });
   const [bringUsers, setBringUsers] = useState(null);
-  const [deleteUser, setDeleteUser] = useState({
-    user_id: "",
-  });
+  
 
 
   //DATA FETCH
@@ -128,33 +129,27 @@ export default function User() {
     await fetch(`http://localhost/users/${id}`, {
       method: "DELETE",
     });
-    history.push("/");
+    navigate("/users");
   };
 
 
    // PAGINATION
 
-   const [page, setPage] = React.useState(0);
-   const [rowsPerPage, setRowsPerPage] = React.useState(5);
- 
-   // Avoid a layout jump when reaching the last page with empty rows.
-   const emptyRows =
-     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0;
- 
-   const handleChangePage = (
-     event: React.MouseEvent<HTMLButtonElement> | null,
-     newPage: number,
-   ) => {
-     setPage(newPage);
-   };
- 
-   const handleChangeRowsPerPage = (
-     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-   ) => {
-     setRowsPerPage(parseInt(event.target.value, 10));
-     setPage(0);
-   };
- 
+
+  // Avoid a layout jump when reaching the last page with empty rows.
+  const emptyRows =
+    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - users.length) : 0;
+
+  const handleChangePage = (event, newPage) => {
+    console.log('handle change pressed')
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
 
   //----FUNCTIONS------
 
@@ -249,21 +244,20 @@ export default function User() {
 
   return (
     <>
-      <h1>User page</h1>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box>
-          <SearchBar />
-        </Box>
-        <Box>
-          <Button variant="contained" href="/users/new">
-            Add New User
-          </Button>
-        </Box>
+
+      <Box sx={{ display: "flex", flexDirection: "row", flexWrap: 'wrap', justifyContent:'space-evenly', p: 3, m:4}}>
+
+        <Grid>
+          <Button variant="contained" href="/users/new">Add New User</Button>   
+        </Grid>
+
+        <Grid>      
+          <Button variant="contained" color="success" onClick={handledOnClick}> Show users</Button>
+        </Grid>
+        
       </Box>
 
-      <Box>
-        <Button onClick={handledOnClick}> Show users</Button>
-      </Box>
+      
 
       {bringUsers}
     </>
