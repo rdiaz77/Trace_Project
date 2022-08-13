@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Typography, Box, TextField, Button } from '@mui/material';
+import { Navigate, useParams} from 'react-router-dom';
 
 
 
@@ -9,24 +10,28 @@ import { Typography, Box, TextField, Button } from '@mui/material';
 
 export default function ShowUser(){
 
-    const [getUser, setGetUser] = useState({
-        user_firstName:''
+
+    const { id } = useParams()
+    console.log(id)
+
+    const [user, setUser] = useState({
+        user_firstName:'',
+        user_lastName: '',
+        user_email:'',
+        credential_id: ''
     })
-
     
-useEffect (()=>{
- 
-    const getUser = async ()=>{
-        const response = await fetch(`http://localhost:3000/users/1`);
-        const json = response.json();
-        return setGetUser(json);
-        
-    };
 
-    getUser();
+	useEffect(() => {
+		const getUser = async () => {
+			const response = await fetch(`http://localhost:3000/users/${id}`)
+			const json = await response.json()
+			setUser(json)
+		}
+		getUser()
+	}, [ id ])
 
-}, []);
-
+console.log(user.user_firstName)
 
     return(
         <main>
@@ -38,13 +43,13 @@ useEffect (()=>{
 
 					<form>
 
-						<TextField id= "outlined-basic" fullWidth label="First Name" defaultValue= {''} variant = "outlined" />
+						<TextField id= "outlined-basic" fullWidth label="First Name" value={user.user_firstName} variant = "outlined" />
 
-						<TextField id= "outlined-basic" fullWidth label="Last Name" defaultValue= "Rafael"  variant = "outlined"/>
+						<TextField id= "outlined-basic" fullWidth label="Last Name" value={user.user_lastName}  variant = "outlined"/>
 
-						<TextField id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
+						<TextField id= "outlined-basic" fullWidth label="Email"  value={user.user_email} variant = "outlined"/>
 					
-						<TextField id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
+						<TextField id= "outlined-basic" fullWidth label="Credential" value={user.credential_id} variant = "outlined"/>
 						<br />
 						<Button variant="outlined" type='submit'> Back</Button>
 						
