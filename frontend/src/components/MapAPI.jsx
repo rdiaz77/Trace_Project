@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { GoogleMap, LoadScript, useJsApiLoader, Marker } from '@react-google-maps/api';
-
+// import Map from 'react-leaflet'
 
 
   const MapAPI = () => {
@@ -28,52 +27,22 @@ import { GoogleMap, LoadScript, useJsApiLoader, Marker } from '@react-google-map
     lat:{lat} ,
       lng: {lng}
   };
+
+  console.log(centers)
+  console.log(centers.lat)
+  console.log(centers.lng)
   
-  const center = {
-    lat:43.075 ,
-      lng: -89.50
-  };
-console.log(centers.lat)
-console.log(centers.lng)
-  
-const containerStyle = {
-  width: '100vh',
-  height: '80vh'
-};
+
 
  
   return (
-    <div> 
-      <div className="App">
-        <button onClick={getLocation}>Get Location</button>
-        <h1>Coordinates</h1>
-        <p>{status}</p>
-        {lat && <p>Latitude: {lat}</p>}
-        {lng && <p>Longitude: {lng}</p>}
-      </div>
+    <div id="map">
 
-  
-    <LoadScript
-    googleMapsApiKey= ""
-    >
-    <GoogleMap
-      mapContainerStyle={containerStyle}
-    
-      center={center}
-      zoom={14}
-      options={{
-        streetViewControl: false,
-        mapTypeControl: false,
-        
-      }}
-      >
-    
-      { /* Child components, such as markers, info windows, etc. */ }
-      
-    </GoogleMap>
 
-    </LoadScript>
+
+
     </div>
+
   );
 }
 

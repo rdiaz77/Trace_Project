@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import './style.css'
-import {Route, Router, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Contact from './pages/Contact';
 import Map from './pages/Map';
@@ -35,7 +35,7 @@ function App() {
           <Route exact path='/users/:id' element={<ShowUser />} />
           <Route exact path ='/users/:id/edit' element={<EditUserForm/>}/>
 
-          <Route exact path="/map" element = {<Map/>}/>
+          <Route exact path="/map" element = {<Map />}/>
 
           <Route exact path="/contacts" element = {<Contact/>}/>
           <Route exact path="/contacts/new" element={<AddContactsForm/>}/>

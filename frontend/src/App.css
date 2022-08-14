@@ -37,3 +37,11 @@
     transform: rotate(360deg);
   }
 }
+
+
+#map { 
+  height: 80%;
+  width: 50%;
+
+
+}

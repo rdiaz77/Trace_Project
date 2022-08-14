@@ -2,7 +2,6 @@ import React from 'react';
 import MapAPI from '../components/MapAPI';
 
 
-
 export default function Map(){
 
     return(
