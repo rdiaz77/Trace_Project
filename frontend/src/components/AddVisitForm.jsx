@@ -1,12 +1,12 @@
 import React , {useState} from 'react';
 import { TextField, Box, Button } from '@mui/material';
 import Grid from '@mui/material/Grid';
-
+import { Navigate, useNavigate } from 'react-router-dom';
 
 
 export default function AddVisitForm(){
 
-
+	const navigate = useNavigate();
 	const [visit, setVisit] = useState({
 		
         user_id: '',
@@ -26,6 +26,7 @@ export default function AddVisitForm(){
 			},
 			body: JSON.stringify(visit)
 		})
+		navigate(`/visits`);
 		
 		
 	}

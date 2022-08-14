@@ -92,7 +92,7 @@ export default function Contact() {
   // SET STATES & GLOBAL VAR
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   
   const navigate = useNavigate();
   const url = "http://localhost:3000/contacts";

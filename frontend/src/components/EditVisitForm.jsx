@@ -17,7 +17,8 @@ export default function EditVisitForm() {
     const [visit, setVisit] = useState({
         place_id:'',
         contact_id: '',
-        user_id:''
+        user_id:'',
+		visit_comment:''
         
     })
 
@@ -56,7 +57,7 @@ export default function EditVisitForm() {
 	return (
 		<>
 
-            <Typography variant='h3'> Edit user</Typography>
+            <Typography variant='h3'> Edit Visit</Typography>
 			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', maxWidth: 450}}>
 
 				<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
@@ -69,6 +70,8 @@ export default function EditVisitForm() {
 						<TextField id= "outlined-basic" onChange= {e => setVisit({ ...visit, contact_id: e.target.value })} fullWidth label="Contact"  value={visit.contact_id} InputLabelProps={{ shrink: true }} variant = "outlined" />
 
 						<TextField id= "outlined-basic" onChange= {e => setVisit({ ...visit, user_id: e.target.value })} fullWidth label="Email" value={visit.user_id} InputLabelProps={{ shrink: true }} variant = "outlined" />
+
+						<TextField id= "outlined-basic" onChange= {e => setVisit({ ...visit, visit_comment: e.target.value })} fullWidth label="Comments" value={visit.visit_comment} multiline rows={10} InputLabelProps={{ shrink: true }} variant = "outlined" />
 					
 						
 						<br />

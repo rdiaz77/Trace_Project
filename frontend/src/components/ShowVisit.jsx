@@ -17,7 +17,9 @@ export default function ShowVisit(){
     const [visit, setVisit] = useState({
         place_id:'',
         contact_id: '',
-        user_id:''
+        user_id:'',
+		visit_comment:''
+
         
     })
     
@@ -47,6 +49,8 @@ export default function ShowVisit(){
 						<TextField id= "outlined-basic" fullWidth label="Contact" value={visit.contact_id}  variant = "outlined"/>
 
 						<TextField id= "outlined-basic" fullWidth label="Sales Person"  value={visit.user_id} variant = "outlined"/>
+
+						<TextField id= "outlined-basic" fullWidth label="Comments" value={visit.visit_comment} multiline rows={10} InputLabelProps={{ shrink: true }} variant = "outlined" />
 					
 						
 						<br />
