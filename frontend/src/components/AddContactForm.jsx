@@ -1,11 +1,15 @@
-import React , {useState} from 'react';
-import { TextField, Box, Button } from '@mui/material';
+import React from 'react';
+import { useState } from 'react';
+import Box from '@mui/material/Box'
+import { Button, TextField, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import Grid from '@mui/material/Grid';
 
 
 
 export default function AddContactForm(){
 
-
+	const navigate = useNavigate();
 	const [contact, setContact] = useState({
 		
         contact_firstName: '',
@@ -26,13 +30,18 @@ export default function AddContactForm(){
 			},
 			body: JSON.stringify(contact)
 		})
-		
+		navigate(`/contacts`);
+
 		
 	}
 
+
     return(
         <>  
-			<h1>Add New Contact</h1>
+			
+			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent:'center', maxWidth: 300, m:10 }}>
+				<Typography variant='h3'> Add new contact</Typography>
+
 			<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
 
 				<form method="POST" action= "/contacts" onSubmit={handleSubmit}>
@@ -47,11 +56,20 @@ export default function AddContactForm(){
 
 					<TextField onChange= {e => setContact({ ...contact, place_id: e.target.value })} id= "outlined-basic" fullWidth label="Place" variant = "outlined"/>
 					<br />
-					<Button onSubmit={handleSubmit} variant="outlined" type='submit'> Add New contact</Button>
+					<Box sx ={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly', maxWidth: 450}}>
+							<Grid>
+								<Button variant="contained" color='primary' type='submit'> Add Contact</Button>
+							</Grid>
+							<Grid>
+								<Button variant="contained" href="/contacts"> Cancel</Button>
+							</Grid>
+
+						</Box>
 					
 				</form>
 
 				</Box>
+			</Box>
 
         
         

@@ -87,7 +87,7 @@ TablePaginationActions.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-export default function User() {
+export default function Visit() {
 
   // SET STATES & GLOBAL VAR
 
@@ -193,7 +193,7 @@ export default function User() {
                 <TableCell>
                   <form
                     method="POST"
-                    action={`http://localhost:3000/users/${visit.visit_id}?_method=DELETE`}
+                    action={`http://localhost:3000/visits/${visit.visit_id}?_method=DELETE`}
                   >
                     <Button
                       variant="contained"
