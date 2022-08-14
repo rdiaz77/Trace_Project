@@ -1,5 +1,6 @@
 import React , {useState} from 'react';
 import { TextField, Box, Button } from '@mui/material';
+import Grid from '@mui/material/Grid';
 
 
 
@@ -32,7 +33,7 @@ export default function AddVisitForm(){
     return(
         <>  
 			<h1>Add New Visit</h1>
-			<Box sx={{'& .MuiTextField-root': { m: 1, width: 300 }}}>
+			<Box sx = {{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent:'center', maxWidth: 300, m:10 }}>
 
 				<form method="POST" action= "/visits" onSubmit={handleSubmit}>
 
@@ -45,7 +46,15 @@ export default function AddVisitForm(){
 
 					<TextField onChange= {e => setVisit({ ...visit, visit_comment: e.target.value })} id= "outlined-basic" fullWidth label="Comments" multiline rows={6} variant = "outlined"/>
 					<br />
-					<Button onSubmit={handleSubmit} variant="outlined" type='submit'> Add New Visit</Button>
+					<Box sx ={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly', maxWidth: 450}}>
+						<Grid>
+								<Button variant="contained" color='primary' type='submit'> Add Visit</Button>
+						</Grid>
+						<Grid>
+								<Button variant="contained" href="/visits"> Cancel</Button>
+						</Grid>
+
+					</Box>
 					
 				</form>
 
