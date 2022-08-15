@@ -5,10 +5,6 @@ import Button from '@mui/material/Button'
 
 
 
-
-
-
-
 export default function MapAPI(){
 
 //  GEOLOCATION API
@@ -16,41 +12,35 @@ export default function MapAPI(){
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [status, setStatus] = useState(null);
+  
 
-  useEffect( ()=>{
+  
     async function getCoords(){
       let pos = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject)
     })
-    return [pos.coords.latitude, pos.coords.longitude]
-    }
-   console.log(getCoords())
-                      
-  },[])
+    
+    let coordinates = await pos
+    coordinates = [ pos.coords.latitude, pos.coords.longitude,]    
+    console.log('thi is the center I am getting:', coordinates)
+    return coordinates
+      
+    }    
 
-  // Build Ad 2                                                             
-  function buildAd2(coordinates){
-  const coords = coordinates
-  const href = `https://www.google.com/maps/search/coffee/@${coords[0]},${coords[1]},15z/`
+getCoords()
+
+
+async function userPos(coordinates){
+  const coord = await coordinates
+  console.log(' this is the length from usePos fc', coord.length)
+
+  console.log('this is the coords from userPos', coord)
+
 }
-
-console.log(buildAd2)
-
-
-
-
+userPos(getCoords())
+  
+// ----------------------------------
                                                            
-
-
-
-  
-
-
-
- 
-  
- 
-
   
 
   
@@ -72,12 +62,17 @@ if(!isLoaded) return <div>Loading....</div>
   const center = {
     lat: 43.075,
     lng: -89.50
+   
 
   }
+
+
   const opts={
     disableDefaultUI: true,
     zoonControl: true
   }
+
+
   const zoom = 10
 
 function CreateMap(){

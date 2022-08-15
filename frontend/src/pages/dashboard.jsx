@@ -1,66 +1,61 @@
-import React from 'react';
-import DashboardCard from '../components/DashboardCard';
-import { Typography, Container, Box} from '@mui/material';
+import React from "react";
+import DashboardCard from "../components/DashboardCard";
+import { Typography, Container, Box } from "@mui/material";
 
-
-
-
-
-export default function Dashboard(){
-
-    return (
+export default function Dashboard() {
+  return (
+    <div>
       <div>
-        <div>
-          <Typography variant="h5">Summary of your last 4 visits</Typography>
-        </div>
+        <Typography variant="h5">Summary of your last 4 visits</Typography>
+      </div>
 
-        <Container maxWidth="lg">
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            p: 1,
+            m: 1,
+            bgcolor: (theme) =>
+              theme.palette.mode === "dark" ? "#101010" : "grey.100",
+            color: (theme) =>
+              theme.palette.mode === "dark" ? "grey.300" : "grey.800",
+            border: "1px solid",
+            borderColor: (theme) =>
+              theme.palette.mode === "dark" ? "grey.800" : "grey.300",
+            borderRadius: 2,
+            fontSize: "0.875rem",
+            fontWeight: "700",
+          }}
+        >
           <Box
             sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
               p: 1,
               m: 1,
-              bgcolor: (theme) =>
-                theme.palette.mode === "dark" ? "#101010" : "grey.100",
-              color: (theme) =>
-                theme.palette.mode === "dark" ? "grey.300" : "grey.800",
-              border: "1px solid",
-              borderColor: (theme) =>
-                theme.palette.mode === "dark" ? "grey.800" : "grey.300",
-              borderRadius: 2,
-              fontSize: "0.875rem",
-              fontWeight: "700",
+              bgcolor: "background.paper",
+              borderRadius: 1,
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                justifyContent: "space-between",
-                p: 1,
-                m: 1,
-                bgcolor: "background.paper",
-                borderRadius: 1,
-              }}
-            >
-              <Box sx={{ bgcolor: "#cfe8fc" }}>
-                <DashboardCard />
-              </Box>
+            <Box sx={{ bgcolor: "#cfe8fc" }}>
+              <DashboardCard />
+            </Box>
 
-              <Box sx={{ bgcolor: "#cfe8fc" }}>
-                <DashboardCard />
-              </Box>
+            <Box sx={{ bgcolor: "#cfe8fc" }}>
+              <DashboardCard />
+            </Box>
 
-              <Box sx={{ bgcolor: "#cfe8fc" }}>
-                <DashboardCard />
-              </Box>
+            <Box sx={{ bgcolor: "#cfe8fc" }}>
+              <DashboardCard />
+            </Box>
 
-              <Box sx={{ bgcolor: "#cfe8fc" }}>
-                <DashboardCard />
-              </Box>
+            <Box sx={{ bgcolor: "#cfe8fc" }}>
+              <DashboardCard />
             </Box>
           </Box>
-        </Container>
-      </div>
-    );
+        </Box>
+      </Container>
+    </div>
+  );
 }
