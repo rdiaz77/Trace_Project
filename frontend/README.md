@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Project SVTrace 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SVTrace stands for Sale Visit Tracer. The app will help sale staff to track on site visits, so the sales manager will have a handy tool to understand how well, or bad, the sale force is covering their territory.
 
-## Available Scripts
+## The app has x main menus:
 
-In the project directory, you can run:
+Dashboard: shows the las 5 visits and the last 5 contacts as well as the next 5 programmed visits
+Visits: allows to add new visits, see a list of all visits, see a  particular visit, edit and delete
+Users: allows to add new users, see a list of all users, see a  particular user, edit and delete users
+Map: Allows to get the location of the app user and show the distance of the next clients if  they are within a certain range
+Contacts:allows to add new contacts, see a list of all contacts, see a  particular contact, edit and delete contacts
+Contact us: takes you to a form to contact the programming team to improve the app and catch inconsistencies
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Routes
+Method	 Path	                        Purpose
+GET	     /	                Show the dashboard with the last 5 visits
 
-### `npm test`
+GET	    /users	            Index page listing all users, an allows selection of a particular user, edit it and delete it from the db
+GET	    /users/new	        Form to create a new user
+POST	/users	            Create a new user
+GET	    /users/:id	        Show page containing details for a specific user 
+GET	    /users/:id/edit	    Edit form for a user
+PUT	    /users/:id        	Make changes to an existing user
+DELETE	/users/:id	        Delete an existing user
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+GET	    /visits	            Index page listing all visits, an allows selection of a particular visit, edit it and delete it from the db
+GET	    /visits/new	        Form to create a new visit
+POST	/visits	            Create a new visit
+GET	    /visits/:id	        Show page containing details for a specific visit 
+GET	    /visits/:id/edit	Edit form for a visit
+PUT	    /visits/:id        	Make changes to an existing visit
+DELETE	/visits/:id	        Delete an existing visit
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+GET	    /contacts	        Index page listing all contacts, an allows selection of a particular contact, edit it and delete it from the db
+GET	    /contacts/new	    Form to create a new contact
+POST	/contacts	        Create a new contact
+GET	    /contacts/:id	    Show page containing details for a specific contact 
+GET	    /contacts/:id/edit	    Edit form for a contact
+PUT	    /contacts/:id       Make changes to an existing contact
+DELETE	/contacts/:id	    Delete an existing contact
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+GET	    /map	            Page shows dynamically a map from google map js. Get the users geolocation and show clients within a range
+GET	    /contactus	        Form to contact the IT team
+POST	/contactus	        Send the contact form
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+GET	    *	                404 page (matches any route not defined above)
 
-### `npm run eject`
+## BACKEND
+### DATABASE(db)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+the db is postgressql and it is managed with pgAdmin and tables are created with sequelize
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Server
+the app use node js and express to handle the routes. The entry file is index,js and the server can be started with nodemon and listen in localhost:3000
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## FRONTEND
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+It uses React for dynamically creating the view. The entry file is index.js and the server can be started with npm start. It usually listen in localhost:3001
 
-## Learn More
+REACT has the standard format with pages and components. The styling is performed with material UI
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
