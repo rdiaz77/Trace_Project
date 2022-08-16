@@ -1,6 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import {GoogleMap, Marker, InfoWindow, useJsApiLoader} from '@react-google-maps/api'
 import Button from '@mui/material/Button'
+import { getTabId } from '@mui/base';
+
+
+
+async function getCoords(){
+  let pos = await new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+})
+
+let coordinates = await pos
+coordinates = [ pos.coords.latitude, pos.coords.longitude,]    
+return coordinates
+  
+}    
+
 
 
 
@@ -9,30 +24,23 @@ export default function MapAPI(){
 
 //  GEOLOCATION API
 
-  const [lat, setLat] = useState(null);
-  const [lng, setLng] = useState(null);
-  const [status, setStatus] = useState(null);
+  
   
 
+  const handleGetLocation = (e) => {
+    getCoords()
+    console.log(getCoords)
   
-    async function getCoords(){
-      let pos = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject)
-    })
-    
-    let coordinates = await pos
-    coordinates = [ pos.coords.latitude, pos.coords.longitude,]    
-    console.log('thi is the center I am getting:', coordinates)
-    return coordinates
-      
-    }    
+  }
 
-getCoords()
+
+  
 
 
 async function userPos(coordinates){
   const coord = await coordinates
-  console.log(' this is the length from usePos fc', coord.length)
+  
+  console.log(' this is the length from usePos fc', coord[0])
 
   console.log('this is the coords from userPos', coord)
 
@@ -93,13 +101,16 @@ function CreateMap(){
   )
 }
 
+
+
+
   return(
 
 
     <div>
 
+      <Button onClick={handleGetLocation} >Get Position</Button>
       <CreateMap  />
-      <Button >Get Position</Button>
 
 
     
