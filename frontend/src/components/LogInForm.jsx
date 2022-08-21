@@ -1,19 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Box from '@mui/material/Box'
 import Button from "@mui/material/Button"
 import { TextField } from '@mui/material';
 import Card from '@mui/material/Card';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import CurrentUser from '../context/CurrentUser'
 
 
 
+// const { setCurrentUser } = useContext(CurrentUser)
 
 export default function LogInForm() {
-
-    const navigate = useNavigate();
-    // const { setCurrentUser } = useContext(CurrentUser)
-
+  
+  
+    let navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null)
 
     const [login, setLogin] = useState({
@@ -37,8 +37,10 @@ export default function LogInForm() {
 		const data = await response.json()
     console.log(data)
 
-    if(response === 200){
-      navigate(`/users`);
+    if(response.status === 200){
+      // setCurrentUser(data.user)
+      navigate('/');
+      console.log('got o dashboard')
     } 
     else {
       setErrorMessage(data.message)
