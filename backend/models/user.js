@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.SMALLINT,
         allowNull: false
     },
+    user_password:{
+      type:DataTypes.STRING
+    },
   }, {
     sequelize,
     modelName: 'User',
