@@ -28,6 +28,8 @@ export default function LogInForm() {
 			body: JSON.stringify(login)
 		})
 		
+    console.log(login)
+
 
 		
 	}
@@ -36,7 +38,8 @@ export default function LogInForm() {
     <div>
       <Card sx={{ maxWidth: 410, height: 210 }}>
         <Box sx={{ width: 390, height: 200, border: "primary dark" }}>
-          <form method="POST" action="/authentication">
+        <form method="POST" action= "/authentication" onSubmit={handleSubmit}>
+
             <TextField
               onChange={(e) =>
                 setLogin({ ...login, user_email: e.target.value })

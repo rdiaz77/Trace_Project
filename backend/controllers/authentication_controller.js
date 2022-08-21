@@ -6,6 +6,7 @@ const { User } = db
 
 router.get('/', async(req,res)=>{
     res.send('authentication get route')
+    console.log('get authe')
 })
 router.post('/', async (req, res) => {
     res.send('post authentication route')
