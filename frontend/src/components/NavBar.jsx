@@ -28,6 +28,9 @@ function Navbar(){
                 <li>
                     <Link to='/support'>Contact Us</Link>
                 </li>
+                <li>
+                    <Link to='/login'>Exit</Link>
+                </li>
               
                 
             </ul>

@@ -21,6 +21,14 @@ router.post('/', async (req, res) => {
 
     })
     console.log(user)
+
+    if (!user || !await bcrypt.compare(req.body.user_password, user.user_password)) {
+        res.status(404).json({ 
+            message: `Could not find a user with the provided username and password` 
+        })
+    } else {
+        res.json({ user })
+    }
 })
 
 
@@ -30,3 +38,6 @@ router.post('/', async (req, res) => {
 
 
 module.exports = router
+
+
+  
