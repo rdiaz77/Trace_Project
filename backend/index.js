@@ -6,18 +6,25 @@ const {Sequelize} = require('sequelize')
 const app = express()
 const PORT = process.env.PORT
 const bodyParser = require('body-parser')
-
+const cookieSession = require('cookie-session')
 
 
 
 
 //MIDDLEWARE
 
+app.use(cookieSession({
+    name: 'session',
+    keys:[process.env.SESSION_SECRET],
+    maxAge: 24 * 60 * 60 * 1000    //24 hours
+}))
 app.use(methodOverride("_method"))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
-
+app.use(cors({
+    origin: 'http://localhost:3001',
+    credentials: true
+}))
 
 // VIEW ROUTE
 

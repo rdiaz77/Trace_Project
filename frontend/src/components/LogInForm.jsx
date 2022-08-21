@@ -4,9 +4,8 @@ import Button from "@mui/material/Button"
 import { TextField } from '@mui/material';
 import Card from '@mui/material/Card';
 import { useNavigate } from "react-router-dom";
+import CurrentUserProvider from '../context/CurrentUser'
 import CurrentUser from '../context/CurrentUser'
-
-
 
 // const { setCurrentUser } = useContext(CurrentUser)
 
@@ -29,6 +28,7 @@ export default function LogInForm() {
 
 		const response = await fetch(db, {
 			method: 'POST',
+      credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -40,7 +40,7 @@ export default function LogInForm() {
     if(response.status === 200){
       // setCurrentUser(data.user)
       navigate('/');
-      console.log('got o dashboard')
+      console.log('form submit working with 200 code')
     } 
     else {
       setErrorMessage(data.message)
