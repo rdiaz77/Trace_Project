@@ -29,9 +29,7 @@ export default function LogInForm() {
 		})
 		
     console.log(login)
-
-
-		
+    
 	}
 
   return (
