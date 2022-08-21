@@ -25,8 +25,7 @@ app.use('/users', require('./controllers/user_controller'))
 app.use('/contacts', require('./controllers/contact_controller'))
 app.use('/credentials', require('./controllers/credential_controller'))
 app.use('/visits', require('./controllers/visit_controller'))
-
-
+app.use('/authentication', require('./controllers/authentication'))
 
 
 //ROUTE

@@ -15,7 +15,8 @@ export default function AddUserForm(){
 		user_firstName: '',
 		user_lastName: '',
 		user_email: '',
-		credential_id: ''
+		credential_id: '',
+		user_password:''
 	})
 
 	// const handleDataChange = e =>{
@@ -57,6 +58,9 @@ export default function AddUserForm(){
 						<TextField onChange= {e => setNewUser({ ...user, user_email: e.target.value })} id= "outlined-basic" fullWidth label="Email"  variant = "outlined"/>
 					
 						<TextField onChange= {e => setNewUser({ ...user, credential_id: e.target.value })} id= "outlined-basic" fullWidth label="Credential" variant = "outlined"/>
+
+						<TextField onChange= {e => setNewUser({ ...user, user_password: e.target.value })} id= "outlined-basic" fullWidth label="Password" variant = "outlined"/>
+
 						<br />
 						<Box sx ={{display: 'flex', flexWrap:'wrap', justifyContent:'space-evenly', maxWidth: 450}}>
 							<Grid>

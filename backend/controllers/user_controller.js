@@ -1,6 +1,7 @@
 const user = require('express').Router()
 const db = require('../models')
 const {User} = db
+const bcrypt = require('bcrypt')
 
 
 
@@ -35,10 +36,28 @@ user.get('/:id', async (req, res) => {
 //ADD A NEW USER -- working
 
 
+// user.post('/', async (req, res) => {
+//     try {
+//         console.log('request here', req.body)
+//         const newUser = await User.create(req.body)
+//         res.status(200).json({
+//             message: 'user created Successfully',
+//             data: newUser
+//         })
+//     } catch(err) {
+//         res.status(500).json(err)
+//     }
+// })
+ 
+// add user w password
 user.post('/', async (req, res) => {
     try {
         console.log('request here', req.body)
-        const newUser = await User.create(req.body)
+        let {user_password, ...rest} = req.body
+        const newUser = await User.create({
+            ...rest,
+            user_password: await bcrypt.hash(user_password, 10)
+        })
         res.status(200).json({
             message: 'user created Successfully',
             data: newUser
@@ -47,6 +66,8 @@ user.post('/', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+
 
 // UPDATE A USER 
 user.put('/:id', async (req, res) => {
