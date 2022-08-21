@@ -4,9 +4,13 @@ const bcrypt = require('bcrypt')
 const { User } = db
 
 
-
+router.get('/', async(req,res)=>{
+    res.send('authentication get route')
+})
 router.post('/', async (req, res) => {
+    res.send('post authentication route')
     console.log('IN HERE')
+    console.log('request here', req.body)
 })
 
 

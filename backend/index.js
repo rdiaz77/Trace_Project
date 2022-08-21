@@ -17,16 +17,16 @@ app.use(methodOverride("_method"))
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-// VIEW ROUTE
 
+
+// VIEW ROUTE
 
 app.use('/places', require('./controllers/place-controller'))
 app.use('/users', require('./controllers/user_controller'))
 app.use('/contacts', require('./controllers/contact_controller'))
 app.use('/credentials', require('./controllers/credential_controller'))
 app.use('/visits', require('./controllers/visit_controller'))
-app.use('/authentication', require('./controllers/authentication'))
-
+app.use('/authentication', require('./controllers/authentication_controller'))
 
 //ROUTE
 

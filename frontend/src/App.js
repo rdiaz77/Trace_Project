@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/users" element = {<User/>}/>
           <Route exact path="/users/new" element={<AddUserForm/>}/>
           <Route exact path='/users/:id' element={<ShowUser />} />
-          <Route exact path ='/users/:id/edit' element={<EditContactForm/>}/>
+          <Route exact path ='/users/:id/edit' element={<EditUserForm/>}/>
 
           <Route exact path="/map" element = {<Map />}/>
 
