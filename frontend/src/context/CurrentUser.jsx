@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const CurrentUser = createContext();
 
-export default function CurrentUserProvider({ children }){
+export function CurrentUserProvider({ children }){
     
     const db = 'http://localhost:3000/authentication/profile'
 
