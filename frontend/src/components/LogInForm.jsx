@@ -39,7 +39,7 @@ function LogInForm() {
     console.log('user name', data.user.user_firstName)
 
     if(response.status === 200){
-      setCurrentUser(data.user.user_firstName)
+      setCurrentUser(data.user)
       navigate('/');
       console.log('form submit working with 200 code')
     } 

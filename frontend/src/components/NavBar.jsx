@@ -1,9 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { CurrentUser } from '../context/CurrentUser';
 
 
 
 function Navbar(){
+    const {UserLoggedOut} = React.useContext(CurrentUser)
 
     return <nav className='nav'>
         <Link to='/' className='site-title'>SVTrace</Link>
@@ -29,7 +31,7 @@ function Navbar(){
                     <Link to='/support'>Contact Us</Link>
                 </li>
                 <li>
-                    <Link to='/login'>Exit</Link>
+                    <Link to='/login' onClick={UserLoggedOut}> Exit</Link>
                 </li>
               
                 

@@ -1,13 +1,16 @@
 import React, { createContext, useState, useEffect } from "react";
 
 
-
 export const CurrentUser = createContext();
 
 export function CurrentUserProvider({ children }){
-    
-    const db = 'http://localhost:3000/authentication/profile'
 
+
+
+
+    const db = 'http://localhost:3000/authentication/profile';
+
+    
     const [currentUser, setCurrentUser] = useState(null)
     window.setCurrentUser = setCurrentUser
 
@@ -25,10 +28,18 @@ export function CurrentUserProvider({ children }){
         
     }, [])
 
+    function UserLoggedOut(){
+        setCurrentUser(null);
+        console.log('log out pressed')
+        console.log(currentUser)
+
+    }
+
 
     return (
-        <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
+        <CurrentUser.Provider value={{ currentUser, setCurrentUser, UserLoggedOut}}>
             {children}
+          
         </CurrentUser.Provider>
     )
 }
