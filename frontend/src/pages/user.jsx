@@ -131,7 +131,7 @@ export default function User() {
     await fetch(`http://localhost/users/${id}`, {
       method: "DELETE",
     });
-    navigate("/users");
+    navigate('/users');
   };
 
   // PAGINATION
