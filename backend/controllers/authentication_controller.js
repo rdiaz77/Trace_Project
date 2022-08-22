@@ -6,7 +6,7 @@ const { User } = db
 // Get user - testing route
 
 router.get('/', async(req,res)=>{
-    console.log(req.body)
+    res.send('get from auth')
     
 })
 

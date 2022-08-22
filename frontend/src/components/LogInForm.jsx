@@ -4,15 +4,15 @@ import Button from "@mui/material/Button"
 import { TextField } from '@mui/material';
 import Card from '@mui/material/Card';
 import { useNavigate } from "react-router-dom";
-import CurrentUserProvider from '../context/CurrentUser'
-import CurrentUser from '../context/CurrentUser'
+import { CurrentUser } from "../context/CurrentUser"
 
-// const { setCurrentUser } = useContext(CurrentUser)
-
-export default function LogInForm() {
+function LogInForm() {
+  
+  const navigate = useNavigate();
+  
+  // const { setCurrentUser } = useContext(CurrentUser)
   
   
-    let navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState(null)
 
     const [login, setLogin] = useState({
@@ -38,7 +38,7 @@ export default function LogInForm() {
     console.log(data)
 
     if(response.status === 200){
-      // setCurrentUser(data.user)
+      // setCurrentUser(data.user_firstName)
       navigate('/');
       console.log('form submit working with 200 code')
     } 
@@ -97,3 +97,5 @@ export default function LogInForm() {
     </div>
   );
 }
+
+export default LogInForm
