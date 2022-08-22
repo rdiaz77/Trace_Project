@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar';
 import './style.css'
 import {Route, Routes} from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
@@ -27,7 +27,7 @@ function App() {
   return (
    
     <div>
-     <Navbar />
+     <NavBar />
     <div>
     
         <Routes>

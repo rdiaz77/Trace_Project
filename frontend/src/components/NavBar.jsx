@@ -4,7 +4,7 @@ import { CurrentUser } from '../context/CurrentUser';
 
 
 
-function Navbar(){
+export default function NavBar(){
     const {UserLoggedOut} = React.useContext(CurrentUser)
 
     return <nav className='nav'>
@@ -42,4 +42,3 @@ function Navbar(){
 }
 
 
-export default Navbar
