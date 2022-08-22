@@ -9,7 +9,7 @@ export function CurrentUserProvider({ children }){
     const db = 'http://localhost:3000/authentication/profile'
 
     const [currentUser, setCurrentUser] = useState(null)
-    // window.setCurrentUser = setCurrentUser
+    window.setCurrentUser = setCurrentUser
 
 
     useEffect(()=>{
@@ -19,6 +19,7 @@ export function CurrentUserProvider({ children }){
             })
             let user = await response.json()
             setCurrentUser(user)
+            console.log('this is current user from context', user)
         }
         getLoggedInUser()
         

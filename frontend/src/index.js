@@ -1,12 +1,12 @@
-import {QueryClient, QueryClientProvider} from 'react-query'
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { CurrentUserProvider } from './context/CurrentUser';
+import {QueryClient, QueryClientProvider} from 'react-query'
+import {BrowserRouter} from 'react-router-dom'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom'
 require('dotenv').config();
-import { CurrentUserProvider } from './context/CurrentUser';
 
 const queryClient = new QueryClient()
 

@@ -10,7 +10,7 @@ function LogInForm() {
   
   const navigate = useNavigate();
   
-  // const { setCurrentUser } = useContext(CurrentUser)
+  const { setCurrentUser } = useContext(CurrentUser)
   
   
     const [errorMessage, setErrorMessage] = useState(null)
@@ -35,10 +35,11 @@ function LogInForm() {
 			body: JSON.stringify(login)
 		})
 		const data = await response.json()
-    console.log(data)
+    console.log('this is data {}}:' ,data)
+    console.log('user name', data.user.user_firstName)
 
     if(response.status === 200){
-      // setCurrentUser(data.user_firstName)
+      setCurrentUser(data.user.user_firstName)
       navigate('/');
       console.log('form submit working with 200 code')
     } 
